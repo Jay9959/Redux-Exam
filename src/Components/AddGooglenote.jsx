@@ -40,6 +40,9 @@ const AddGoogleNote = () => {
         if (!noteInput.title.trim()) errors.title = "Title is required.";
         if (!noteInput.description.trim()) errors.description = "Description is required.";
         if (!noteInput.date) errors.date = "Date is required.";
+        else if (new Date(noteInput.date) > new Date()) {
+            errors.date = "date can not be future"
+        }
         if (!noteInput.priority) errors.priority = "Priority is required.";
         setValidationErrors(errors);
         return Object.keys(errors).length === 0;
